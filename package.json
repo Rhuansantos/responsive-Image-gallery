@@ -1,0 +1,31 @@
+{
+  "name": "searchapp",
+  "version": "1.0.0",
+  "main": "gulpfile.babel.js",
+  "dependencies": {
+    "babel-preset-es2015": "^6.24.0",
+    "browser-sync": "^2.18.8",
+    "foundation-sites": "^6.3.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-sass": "^3.1.0"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rhuansantos/search-app.git"
+  },
+  "author": "Rhuan Santos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rhuansantos/search-app/issues"
+  },
+  "homepage": "https://github.com/Rhuansantos/search-app#readme",
+  "description": ""
+}
