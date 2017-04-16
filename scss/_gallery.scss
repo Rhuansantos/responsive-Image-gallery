@@ -1,6 +1,10 @@
 section{
 	width: 80%;
 	margin: 0 auto;
+
+	@media (max-width: 650px) {
+		width: 100%;
+	}
 }
 
 #gallery{
@@ -10,13 +14,14 @@ section{
 	li{
 		flex-direction: column;
 		flex-basis: 30%;
-		height: 200px;
+		max-height: 400px;
 		border: solid 1px;
 		list-style: none;
 		margin-bottom: 30px;
 
 		img{
-			display: none;
+			width: 100%;
+			max-height: 400px;
 		}
 
 	}
@@ -24,6 +29,34 @@ section{
 	li:not(:nth-child(3n+1)){
 		margin-left: 5%;
 	}
+
+	@media (max-width: 1200px) {
+
+		li:not(:nth-child(3n+1)){
+			margin-left: 0;
+		}
+
+		li{
+			flex-basis: 45%;
+			
+		}
+		li:not(:nth-child(2n+1)){
+			margin-left: 10%;
+		}
+
+	}
+
+	@media (max-width: 650px) {
+		li:not(:nth-child(2n+1)){
+			margin-left: 0;
+		}
+
+		li{
+			flex-basis: 100%;
+			margin-bottom: 20px;
+		}
+	}
+		
 
 	
 }

@@ -12,37 +12,54 @@ const unsplash = new Unsplash({
 
 function photos() {
 
-  unsplash.photos.getRandomPhoto({ featured: true, count: 2})
+  unsplash.photos.getRandomPhoto({ featured: true, count: 3})
     .then(toJson)
     .then(json => {
       console.log(json);
+       view(json);
     });
+
+  
 }
 
-function view(){
+function view(data){
+
 	let gallery = document.getElementById('gallery');
-	let tempalte = null;
+	let template = null;
+	let w320 = "?w=320";
+	let w640 = "?w=640";
+	let w800 = "?w=800";
 
 
-	for(let i = 0; i < 12; i++){
 
-		console.log(i);
+
+	for(let i = 0; i < data.length; i++){
 	
-		tempalte = `
+		template = `
 			
-			<li><img src="https://placeholdit.imgix.net/~text?txtsize=80&txt=D&w=550&h=550"></li>
+			<li>
+
+			<img src="${data[i].urls.raw}"
+
+               srcset=" ${data[i].urls.raw + w320} 320w,
+                        ${data[i].urls.raw + w640} 620w ,
+                        ${data[i].urls.raw + w800} 800w"
+                alt="">
+
+			</li>
+
+
 
 		`;
 
-			gallery.insertAdjacentHTML('beforeend', tempalte);
+			gallery.insertAdjacentHTML('beforeend', template);
 
 	}
 
-
-
-	// photos();
-
 }
 
-view();
+
+	photos();
+
+
 

@@ -16,28 +16,29 @@ var unsplash = new _unsplashJs2.default({
 
 function photos() {
 
-	unsplash.photos.getRandomPhoto({ featured: true, count: 2 }).then(_unsplashJs.toJson).then(function (json) {
+	unsplash.photos.getRandomPhoto({ featured: true, count: 3 }).then(_unsplashJs.toJson).then(function (json) {
 		console.log(json);
+		view(json);
 	});
 }
 
-function view() {
+function view(data) {
+
 	var gallery = document.getElementById('gallery');
-	var tempalte = null;
+	var template = null;
+	var w320 = "?w=320";
+	var w640 = "?w=640";
+	var w800 = "?w=800";
 
-	for (var i = 0; i < 12; i++) {
+	for (var i = 0; i < data.length; i++) {
 
-		console.log(i);
+		template = "\n\t\t\t\n\t\t\t<li>\n\n\t\t\t<img src=\"" + data[i].urls.raw + "\"\n\n               srcset=\" " + (data[i].urls.raw + w320) + " 320w,\n                        " + (data[i].urls.raw + w640) + " 620w ,\n                        " + (data[i].urls.raw + w800) + " 800w\"\n                alt=\"\">\n\n\t\t\t</li>\n\n\n\n\t\t";
 
-		tempalte = "\n\t\t\t\n\t\t\t<li><img src=\"https://placeholdit.imgix.net/~text?txtsize=80&txt=D&w=550&h=550\"></li>\n\n\t\t";
-
-		gallery.insertAdjacentHTML('beforeend', tempalte);
+		gallery.insertAdjacentHTML('beforeend', template);
 	}
-
-	// photos();
 }
 
-view();
+photos();
 
 },{"unsplash-js":15}],2:[function(require,module,exports){
 // Filename: formurlencoded.js
