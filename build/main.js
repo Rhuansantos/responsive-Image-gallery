@@ -8,35 +8,45 @@ var _unsplashJs2 = _interopRequireDefault(_unsplashJs);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var unsplash = new _unsplashJs2.default({
-	applicationId: "4cdc291407264ed612ccd71b42f2c2d5a587c118b79bf17cd74d039adbd76695",
-	secret: "528318694d98fa55275e5b50e640e0e11ab6377dd7b34949a1d3186d065b4fac",
-	callbackUrl: "/photos/random"
+    applicationId: "4cdc291407264ed612ccd71b42f2c2d5a587c118b79bf17cd74d039adbd76695",
+    secret: "528318694d98fa55275e5b50e640e0e11ab6377dd7b34949a1d3186d065b4fac",
+    callbackUrl: "/photos/random"
 }); // importing library
 
 
 function photos() {
 
-	unsplash.photos.getRandomPhoto({ featured: true, count: 3 }).then(_unsplashJs.toJson).then(function (json) {
-		console.log(json);
-		view(json);
-	});
+    unsplash.photos.getRandomPhoto({
+        featured: true,
+        count: 12
+    }).then(_unsplashJs.toJson).then(function (json) {
+        console.log(json);
+        view(json);
+    });
 }
 
 function view(data) {
 
-	var gallery = document.getElementById('gallery');
-	var template = null;
-	var w320 = "?w=320";
-	var w640 = "?w=640";
-	var w800 = "?w=800";
+    var gallery = document.getElementById('gallery');
+    var template = null;
+    var w320 = "?w=320";
+    var w640 = "?w=640";
+    var w800 = "?w=800";
 
-	for (var i = 0; i < data.length; i++) {
+    for (var i = 0; i < data.length; i++) {
 
-		template = "\n\t\t\t\n\t\t\t<li>\n\n\t\t\t<img src=\"" + data[i].urls.raw + "\"\n\n               srcset=\" " + (data[i].urls.raw + w320) + " 320w,\n                        " + (data[i].urls.raw + w640) + " 620w ,\n                        " + (data[i].urls.raw + w800) + " 800w\"\n                alt=\"\">\n\n\t\t\t</li>\n\n\n\n\t\t";
+        console.log(i);
 
-		gallery.insertAdjacentHTML('beforeend', template);
-	}
+        template = "\n\t\t\t\n\t\t\t<li class=\"photo\">\n\n\t\t\t<img src=\"" + data[i].urls.raw + "\"\n\n               srcset=\" " + (data[i].urls.raw + w320) + " 320w,\n                        " + (data[i].urls.raw + w640) + " 620w,\n                        " + (data[i].urls.raw + w800) + " 800w\"\n                alt=\"\">\n\n                <ul>\n\t\t\t\t\t<li><img  class=\"icons\" src=\"assets/user-icon.svg\" alt=\"\"><h2>" + data[i].user.first_name + "</h2></li>\n\t\t\t\t\t<li><img class=\"icons\" src=\"assets/heart.svg\" alt=\"\"><h2>" + data[i].user.total_likes + "</h2></li>\n\t\t\t\t</ul>\n\n\t\t\t</li>\n\n\n\n\t\t";
+
+        gallery.insertAdjacentHTML('beforeend', template);
+    }
 }
+
+document.getElementById('logo').addEventListener('click', function (event) {
+
+    var photos = document.getElementsByClassName('photos');
+});
 
 photos();
 

@@ -57,8 +57,25 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+header {
+  margin-bottom: 100px; }
+  header img {
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px; }
+    header img:hover .photo {
+      transform: scale(20);
+      display: none; }
+  header h1 {
+    font-size: 50px;
+    text-align: center;
+    margin-top: 10px; }
+  header p {
+    text-align: center;
+    margin-top: 10px; }
+
 section {
-  width: 80%;
+  width: 90%;
   margin: 0 auto; }
   @media (max-width: 650px) {
     section {
@@ -67,28 +84,60 @@ section {
 #gallery {
   display: flex;
   flex-wrap: wrap; }
-  #gallery li {
+  #gallery .photo {
     flex-direction: column;
     flex-basis: 30%;
-    max-height: 400px;
-    border: solid 1px;
+    height: 450px;
     list-style: none;
-    margin-bottom: 30px; }
-    #gallery li img {
+    margin-bottom: 30px;
+    overflow: hidden;
+    transition: 300ms all ease-in; }
+    #gallery .photo img {
+      min-height: 450px;
+      width: 100%; }
+    #gallery .photo:hover ul {
+      bottom: 20%; }
+    #gallery .photo ul {
+      position: relative;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      overflow: hidden;
       width: 100%;
-      max-height: 400px; }
-  #gallery li:not(:nth-child(3n+1)) {
+      height: 20%;
+      transition: 300ms all ease; }
+      #gallery .photo ul li {
+        width: 100%;
+        height: 30px;
+        margin-top: 10px; }
+        #gallery .photo ul li h2 {
+          height: 30px;
+          display: block;
+          padding-top: 5px;
+          float: left;
+          color: white;
+          padding-left: 10px; }
+        #gallery .photo ul li .icons {
+          width: 50px;
+          height: 30px;
+          min-height: 0;
+          margin-left: 20px;
+          float: left; }
+  #gallery .photo:not(:nth-child(3n+1)) {
     margin-left: 5%; }
-  @media (max-width: 1200px) {
-    #gallery li:not(:nth-child(3n+1)) {
+  @media (max-width: 1400px) {
+    #gallery .photo:not(:nth-child(3n+1)) {
       margin-left: 0; }
-    #gallery li {
+    #gallery .photo {
       flex-basis: 45%; }
-    #gallery li:not(:nth-child(2n+1)) {
+    #gallery .photo:not(:nth-child(2n+1)) {
       margin-left: 10%; } }
   @media (max-width: 650px) {
-    #gallery li:not(:nth-child(2n+1)) {
+    #gallery .photo:not(:nth-child(2n+1)) {
       margin-left: 0; }
-    #gallery li {
+    #gallery .photo {
       flex-basis: 100%;
-      margin-bottom: 20px; } }
+      margin-bottom: 20px; }
+      #gallery .photo ul {
+        bottom: 20%; } }
